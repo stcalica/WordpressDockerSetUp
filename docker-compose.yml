@@ -6,10 +6,10 @@ services:
        - db_data:/var/lib/mysql
      restart: always
      environment:
-       MYSQL_ROOT_PASSWORD: wordpress
+       MYSQL_ROOT_PASSWORD: example
        MYSQL_DATABASE: wordpress
        MYSQL_USER: wordpress
-       MYSQL_USER_PASSWORD: wordpress 
+       MYSQL_PASSWORD: example
 
    wordpress:
      depends_on:
@@ -20,7 +20,7 @@ services:
      restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_PASSWORD: wordpress
+       WORDPRESS_DB_PASSWORD: example
      volumes: 
        - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini 
 volumes:
