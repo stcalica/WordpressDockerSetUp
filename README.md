@@ -23,7 +23,15 @@ docker ps
 docker exec -i ID_OF_CONTAINER bash /location/of/email.sh
 
 
- /wp-includes/class-phpmailer.php!
+ /wp-includes/class-phpmailer.php: 
+ 
 public $From = 'root@votrevps';
 public $Sender = 'root@votrevps';
 public $Mailer = 'smtp';
+
+email.sh: 
+#!/bin/bash
+line=$(head -n 1 /etc/hosts)
+line2=$(echo $line | awk '{print $2}')
+echo "$line $line2.localdomain" >> /etc/hosts
+service sendmail restart
